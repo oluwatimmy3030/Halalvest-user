@@ -46,20 +46,20 @@ export const swapRateLabel = (from, to) => {
 export const initialGold = { ounces: 0.481, invested: 2080000 };
 
 export const virtualAccount = {
-  bankName: "Wema Bank / CENTE Partner",
-  accountName: "Samuel Adeyemi / CENTE",
+  bankName: "Wema Bank / HalalVest Partner",
+  accountName: "Samuel Adeyemi / HalalVest",
   accountNumber: "8042196501",
   currency: "NGN",
 };
 
 export const bankAccounts = {
-  USD: { bankName: "CENTE Partner Bank", accountName: "CENTE USD Collections", accountNumber: "021000021", currency: "USD" },
-  NGN: { bankName: "CENTE Partner Bank", accountName: "CENTE NGN Collections", accountNumber: "8042196501", currency: "NGN" },
+  USD: { bankName: "HalalVest Partner Bank", accountName: "HalalVest USD Collections", accountNumber: "021000021", currency: "USD" },
+  NGN: { bankName: "HalalVest Partner Bank", accountName: "HalalVest NGN Collections", accountNumber: "8042196501", currency: "NGN" },
 };
 
-export const safevestProducts = [
-  { id: "USD", name: "Safevest USD", balance: 1800, contributed: 1680, rate: "5.2% p.a. mock", currency: "USD", gain: 120 },
-  { id: "NGN", name: "Safevest NGN", balance: 820000, contributed: 760000, rate: "12.5% p.a. mock", currency: "NGN", gain: 60000 },
+export const halalvestProducts = [
+  { id: "USD", name: "HalalVest USD", balance: 1800, contributed: 1680, rate: "5.2% p.a. mock", currency: "USD", gain: 120 },
+  { id: "NGN", name: "HalalVest NGN", balance: 820000, contributed: 760000, rate: "12.5% p.a. mock", currency: "NGN", gain: 60000 },
 ];
 
 export const initialPlans = [
@@ -88,13 +88,13 @@ export const initialTransactions = [
   { id: "t2", title: "Wallet funded", subtitle: "Virtual Account Transfer", amount: 250000, currency: "NGN", category: "Money In", status: "Completed", date: "Yesterday, 16:18" },
   { id: "t3", title: "Sent to Ada Okafor", subtitle: "Local bank transfer", amount: -45000, currency: "NGN", category: "Money Out", status: "Completed", date: "18 Sep, 09:30", fee: 50 },
   { id: "t4", title: "USD wallet funded", subtitle: "Card / Fiat On-Ramp", amount: 300, currency: "USD", category: "Money In", status: "Completed", date: "17 Sep, 14:05", fee: 0 },
-  { id: "t5", title: "Safevest USD deposit", subtitle: "Dollar reserve plan", amount: -500, currency: "USD", category: "Wealth", status: "Completed", date: "15 Sep, 08:20", fee: 0 },
+  { id: "t5", title: "HalalVest USD deposit", subtitle: "Dollar reserve plan", amount: -500, currency: "USD", category: "Wealth", status: "Completed", date: "15 Sep, 08:20", fee: 0 },
 ];
 
 export const initialNotifications = [
   { id: "n1", title: "Currency Swap completed", body: "You successfully swapped ₦232,230 to $150.00.", time: "12 min", read: false },
   { id: "n2", title: "Wallet funded", body: "Your NGN wallet received ₦250,000 via your virtual account.", time: "1 day", read: false },
-  { id: "n3", title: "Profile created", body: "Welcome to CENTE. Explore wealth plans and live rates.", time: "3 days", read: true },
+  { id: "n3", title: "Profile created", body: "Welcome to HalalVest. Explore halal portfolios and live rates.", time: "3 days", read: true },
 ];
 
 export const chartSeries = [22, 25, 24, 29, 31, 34, 33, 38, 41, 43, 47, 52];

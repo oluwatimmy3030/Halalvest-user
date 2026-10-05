@@ -1,4 +1,4 @@
-// src/components/cente/home-page.jsx
+// src/components/halalvest/home-page.jsx
 import { Link } from "react-router-dom";
 import {
   ArrowDownToLine,
@@ -21,9 +21,9 @@ import {
   formatOunces,
   goldPrice,
   rates,
-  safevestProducts,
+  halalvestProducts,
 } from "@/data/mock-data";
-import { useCente } from "@/state/cente-context";
+import { useHalalvest } from "@/state/halalvest-context";
 import { TransactionRow } from "./ui";
 import { WelcomeGate } from "./welcome-gate";
 
@@ -32,13 +32,13 @@ import { WelcomeGate } from "./welcome-gate";
 /* -------------------------------------------------------------------------- */
 
 const ACTIONS = [
-  { label: "Fund Wallet",   icon: ArrowDownToLine, kind: "fund" },
+  { label: "Add Funds",   icon: ArrowDownToLine, kind: "fund" },
   { label: "Send Money",    icon: Send,            to: "/send" },
   { label: "Swap",          icon: ArrowLeftRight,  kind: "swap" },
   { label: "Transactions",  icon: ReceiptText,     to: "/transactions" },
-  { label: "Safevest USD",  icon: Landmark,        to: "/wealth?product=USD" },
-  { label: "Safevest NGN",  icon: WalletCards,     to: "/wealth?product=NGN" },
-  { label: "Safevest Gold", icon: Gem,             to: "/wealth?product=GOLD" },
+  { label: "HalalVest USD",  icon: Landmark,        to: "/wealth?product=USD" },
+  { label: "HalalVest NGN",  icon: WalletCards,     to: "/wealth?product=NGN" },
+  { label: "HalalVest Gold", icon: Gem,             to: "/wealth?product=GOLD" },
 ];
 
 /* -------------------------------------------------------------------------- */
@@ -84,7 +84,7 @@ function SpiralBackground() {
 /* -------------------------------------------------------------------------- */
 
 export function HomePage() {
-  const { balances, hidden, toggleHidden, transactions, gold, reset } = useCente();
+  const { balances, hidden, toggleHidden, transactions, gold, reset } = useHalalvest();
 
   const [currency, setCurrency] = useState("USD");
   const [flow, setFlow] = useState(null);
@@ -98,7 +98,7 @@ export function HomePage() {
   const wallets = [
     { key: "USD",  label: "USD Wallet",  hint: "Available balance",     symbol: "$",  display: formatMoney(usdValue, "USD") },
     { key: "NGN",  label: "NGN Wallet",  hint: "Available balance",     symbol: "₦",  display: formatMoney(ngnValue, "NGN") },
-    { key: "GOLD", label: "Gold Wallet", hint: "Safevest Gold holding", symbol: "OZ", display: formatOunces(ounces) },
+    { key: "GOLD", label: "Precious Metals", hint: "Gold & metals holding", symbol: "OZ", display: formatOunces(ounces) },
   ];
 
   const getTotalForCurrency = (cur) => {
@@ -123,7 +123,7 @@ export function HomePage() {
           Good afternoon, Samuel
         </p>
         <h1 className="mt-1 truncate font-display text-2xl font-semibold leading-tight sm:text-3xl">
-          Your wealth, thoughtfully managed.
+          Your wealth, values-aligned.
         </h1>
       </div>
 
@@ -132,14 +132,14 @@ export function HomePage() {
         {/* ------------------------------------------------------------ */}
         {/*  Balance card — flat colour + single spiral line              */}
         {/* ------------------------------------------------------------ */}
-        <div className="relative flex min-h-56 overflow-hidden rounded-3xl bg-[#96691a] p-5 text-white sm:p-7">
+        <div className="balance-card relative flex min-h-56 overflow-hidden rounded-3xl p-5 text-white sm:p-7">
           <SpiralBackground />
 
           <div className="relative z-10 flex w-full flex-col">
             {/* Header */}
             <div className="flex items-start justify-between gap-3">
               <div className="min-w-0">
-                <p className="text-sm text-white/85">Total wallet balance</p>
+                <p className="text-sm text-white/85">Total portfolio value</p>
                 <p className="mt-2 truncate font-display text-3xl font-semibold tabular-nums sm:text-4xl">
                   {formatTotal(currency)}
                 </p>
@@ -172,7 +172,7 @@ export function HomePage() {
                     className={[
                       "inline-flex h-8 shrink-0 items-center justify-center whitespace-nowrap rounded-full px-3.5 text-xs font-medium leading-none transition-colors",
                       active
-                        ? "bg-white text-[#7a5a0f]"
+                        ? "bg-white text-emerald-dark"
                         : "text-white/85 hover:bg-white/15 hover:text-white",
                     ].join(" ")}
                   >
@@ -193,7 +193,7 @@ export function HomePage() {
 
               <Button
                 onClick={() => setFlow({ kind: "fund", currency })}
-                className="shrink-0 rounded-full bg-white text-[#7a5a0f] hover:bg-white/90"
+                className="shrink-0 rounded-full bg-white text-emerald-dark hover:bg-white/90"
               >
                 <ArrowDownToLine className="size-4" />
                 Fund Wallet
@@ -284,7 +284,7 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* Recent activity + Safevest products */}
+      {/* Recent activity + HalalVest products */}
       <section className="grid gap-5 xl:grid-cols-[1.25fr_.75fr]">
         <div className="panel overflow-hidden p-4 sm:p-5">
           <div className="mb-3 flex items-center justify-between gap-3">
@@ -316,13 +316,13 @@ export function HomePage() {
         <div>
           <div className="mb-3 flex items-center justify-between gap-3">
             <h2 className="truncate text-base font-semibold sm:text-lg">
-              Safevest
+              HalalVest
             </h2>
             <TrendingUp className="size-4 shrink-0 text-muted-foreground/60" />
           </div>
 
           <div className="space-y-2.5">
-            {safevestProducts.map((p) => (
+            {halalvestProducts.map((p) => (
               <Link
                 key={p.id}
                 to={`/wealth?product=${p.id}`}

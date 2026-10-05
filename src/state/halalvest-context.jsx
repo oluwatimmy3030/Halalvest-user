@@ -15,7 +15,7 @@ const initialState = {
   hidden: false,
 };
 
-const CenteContext = createContext(null);
+const HalalvestContext = createContext(null);
 
 const GOLD = "GOLD";
 
@@ -28,7 +28,7 @@ const fiatToNGN = (currency, amount) => (currency === "USD" ? amount * rates.NGN
 const getStored = () => {
   if (typeof window === "undefined") return initialState;
   try {
-    const data = JSON.parse(localStorage.getItem("cente-demo-state") ?? "null");
+    const data = JSON.parse(localStorage.getItem("halalvest-demo-state") ?? "null");
     if (!data) return initialState;
     return { ...initialState, ...data, user: { ...initialState.user, ...(data.user ?? {}) } };
   } catch {
@@ -36,7 +36,7 @@ const getStored = () => {
   }
 };
 
-function useCenteState() {
+function useHalalvestState() {
   const [state, setState] = useState(initialState);
   const [hydrated, setHydrated] = useState(false);
 
@@ -46,7 +46,7 @@ function useCenteState() {
   }, []);
 
   useEffect(() => {
-    if (hydrated) localStorage.setItem("cente-demo-state", JSON.stringify(state));
+    if (hydrated) localStorage.setItem("halalvest-demo-state", JSON.stringify(state));
   }, [state, hydrated]);
 
   const updateUser = (patch) => {
@@ -63,7 +63,7 @@ function useCenteState() {
         txCurrency = currency,
         txQuantity = null,
         txPricePerOunce = null,
-        subtitle = "CENTE transaction";
+        subtitle = "HalalVest transaction";
 
       if (type === "fund") {
         next.balances[currency] += amount;
@@ -117,12 +117,12 @@ function useCenteState() {
       }
       if (type === "save") {
         next.balances[currency] -= amount;
-        title = `Safevest ${input.product} deposit`;
+        title = `HalalVest ${input.product} deposit`;
         category = "Wealth";
       }
       if (type === "withdraw") {
         next.balances[currency] += amount;
-        title = `Safevest ${input.product} withdrawal`;
+        title = `HalalVest ${input.product} withdrawal`;
         category = "Wealth";
         txAmount = amount;
       }
@@ -131,14 +131,14 @@ function useCenteState() {
         next.balances[currency] -= amount;
         next.gold.ounces += ounces;
         next.gold.invested += currency === "USD" ? amount * rates.NGN_USD : amount;
-        title = "Safevest Gold purchase";
+        title = "HalalVest Gold purchase";
         category = "Gold";
       }
       if (type === "gold-sell") {
         const payout = amount * goldPrice[currency] * 0.995;
         next.gold.ounces -= amount;
         next.balances[currency] += payout;
-        title = "Safevest Gold sale";
+        title = "HalalVest Gold sale";
         category = "Gold";
         txAmount = payout;
       }
@@ -195,20 +195,20 @@ function useCenteState() {
     },
     markAllRead: () => setState((s) => ({ ...s, notifications: s.notifications.map((n) => ({ ...n, read: true })) })),
     reset: () => {
-      localStorage.removeItem("cente-demo-state");
-      localStorage.removeItem("cente-onboarded");
+      localStorage.removeItem("halalvest-demo-state");
+      localStorage.removeItem("halalvest-onboarded");
       setState(initialState);
     },
   };
 }
 
-export function CenteProvider({ children }) {
-  return <CenteContext.Provider value={useCenteState()}>{children}</CenteContext.Provider>;
+export function HalalvestProvider({ children }) {
+  return <HalalvestContext.Provider value={useHalalvestState()}>{children}</HalalvestContext.Provider>;
 }
 
-export function useCente() {
-  const value = useContext(CenteContext);
-  if (!value) throw new Error("CenteProvider missing");
+export function useHalalvest() {
+  const value = useContext(HalalvestContext);
+  if (!value) throw new Error("HalalvestProvider missing");
   return value;
 }
 

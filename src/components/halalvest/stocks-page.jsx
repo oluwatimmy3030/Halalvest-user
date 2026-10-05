@@ -1,4 +1,4 @@
-// src/components/cente/stocks-page.jsx
+// src/components/halalvest/stocks-page.jsx
 import { useMemo, useState } from "react";
 import {
   ArrowDownRight,

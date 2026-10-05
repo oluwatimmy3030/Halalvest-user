@@ -1,9 +1,9 @@
-import { PageTitle } from "@/components/cente/ui";
+import { PageTitle } from "@/components/halalvest/ui";
 import { Button } from "@/components/ui/button";
-import { useCente } from "@/state/cente-context";
+import { useHalalvest } from "@/state/halalvest-context";
 
 export default function NotificationsPage() {
-  const { notifications, markAllRead } = useCente();
+  const { notifications, markAllRead } = useHalalvest();
   return (
     <>
       <div className="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-4">

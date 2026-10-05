@@ -1,17 +1,15 @@
-// src/components/cente/send-page.jsx
+// src/components/halalvest/send-page.jsx
 import { useState } from "react";
 import { Check, ChevronLeft, LoaderCircle, Send, ShieldCheck, Smartphone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { PageTitle } from "./ui";
 import { formatMoney, rates } from "@/data/mock-data";
-import { useCente } from "@/state/cente-context";
+import { useHalalvest } from "@/state/halalvest-context";
 
 /* -------------------------------------------------------------------------- */
 /*  Spiral background                                                         */
 /* -------------------------------------------------------------------------- */
-
-const GOLD = "#96691a";
 
 // Archimedean spiral path, built once at module load.
 function buildSpiral({ cx, cy, turns, gap, step = 0.12 }) {
@@ -52,7 +50,7 @@ function SpiralBackground() {
 /* -------------------------------------------------------------------------- */
 
 export default function SendPage() {
-  const { user, balances, completeAction, verified, verify, verifyPhoneOtp, pinSet, setupPin } = useCente();
+  const { user, balances, completeAction, verified, verify, verifyPhoneOtp, pinSet, setupPin } = useHalalvest();
   const [step, setStep] = useState("details");
   const [source, setSource] = useState("NGN");
   const [destination, setDestination] = useState("NGN");
@@ -154,10 +152,7 @@ export default function SendPage() {
         {/*  Summary card                                                 */}
         {/* ------------------------------------------------------------ */}
         {step !== "success" && (
-          <div
-            className="relative overflow-hidden rounded-3xl p-5 text-white sm:p-7"
-            style={{ backgroundColor: GOLD }}
-          >
+          <div className="balance-card relative overflow-hidden rounded-3xl p-5 text-white sm:p-7">
             <SpiralBackground />
 
             <div className="relative z-10">
@@ -461,13 +456,12 @@ export default function SendPage() {
           {/* SUCCESS STEP */}
           {step === "success" && (
             <div
-              className="relative -m-5 grid min-h-80 place-items-center overflow-hidden rounded-3xl p-5 text-center text-white sm:-m-7 sm:p-7"
-              style={{ backgroundColor: GOLD }}
+              className="balance-card relative -m-5 grid min-h-80 place-items-center overflow-hidden rounded-3xl p-5 text-center text-white sm:-m-7 sm:p-7"
             >
               <SpiralBackground />
 
               <div className="relative z-10">
-                <span className="mx-auto grid size-16 place-items-center rounded-full bg-white text-[#96691a]">
+                <span className="mx-auto grid size-16 place-items-center rounded-full bg-white text-gold-deep">
                   <Check className="size-8" />
                 </span>
                 <h2 className="mt-5 font-display text-3xl">Transfer Dispatched</h2>
@@ -475,7 +469,7 @@ export default function SendPage() {
                   {formatMoney(numeric, source)} sent to {recipient.name} via {method}.
                 </p>
                 <Button
-                  className="mt-6 bg-white text-[#96691a] hover:bg-white/90"
+                  className="mt-6 bg-white text-gold-deep hover:bg-white/90"
                   size="lg"
                   onClick={reset}
                 >

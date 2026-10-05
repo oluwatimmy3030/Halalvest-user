@@ -5,10 +5,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { countries } from "@/data/mock-data";
-import { useCente } from "@/state/cente-context";
+import { useHalalvest } from "@/state/halalvest-context";
 
 export function WelcomeGate() {
-  const { user, updateUser } = useCente();
+  const { user, updateUser } = useHalalvest();
   const [open, setOpen] = useState(false);
   const [step, setStep] = useState("welcome");
   const [firstName, setFirstName] = useState(user?.firstName ?? "Samuel");
@@ -22,7 +22,7 @@ export function WelcomeGate() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    if (!localStorage.getItem("cente-onboarded")) setOpen(true);
+    if (!localStorage.getItem("halalvest-onboarded")) setOpen(true);
   }, []);
 
   const filteredCountries = countries.filter(
@@ -48,7 +48,7 @@ export function WelcomeGate() {
       phone: phone.trim(),
     });
 
-    localStorage.setItem("cente-onboarded", "1");
+    localStorage.setItem("halalvest-onboarded", "1");
     setStep("done");
     setTimeout(() => setOpen(false), 800);
   };
@@ -68,17 +68,17 @@ export function WelcomeGate() {
                   <Shield className="size-3.5" /> Individual Accounts Only
                 </div>
                 <h2 className="mt-4 font-display text-4xl font-semibold leading-tight sm:text-5xl">
-                  Save. Spend.<br />
-                  <em className="text-primary not-italic">Grow in USD & NGN.</em>
+                  Grow wealth.<br />
+                  <em className="text-primary not-italic">Values that align.</em>
                 </h2>
                 <p className="mt-4 max-w-sm text-sm leading-6 text-muted-foreground">
-                  A high-yield multi-currency wallet built for seamless payments, real-time swaps, and Safevest plans.
+                  A global, AI-powered platform for halal and ethical investing across equities, precious metals, sukuk, real estate and more.
                 </p>
 
                 <div className="mt-6 flex flex-col gap-2 rounded-xl border border-border bg-card/60 p-4 text-xs text-muted-foreground">
                   <p className="flex items-center gap-2 font-medium text-foreground">
                     <span className="grid size-5 place-items-center rounded-full bg-primary/20 text-primary">✓</span>
-                    No business onboarding (Individuals only in V1)
+                    Riba-free, values-based portfolios you can monitor
                   </p>
                   <p className="flex items-center gap-2 font-medium text-foreground">
                     <span className="grid size-5 place-items-center rounded-full bg-primary/20 text-primary">✓</span>
@@ -88,11 +88,11 @@ export function WelcomeGate() {
               </div>
 
               <div className="space-y-3">
-                <Button size="lg" className="w-full gap-2 shadow-gold" onClick={() => setStep("profile")}>
+                <Button size="lg" className="w-full gap-2 shadow-brand" onClick={() => setStep("profile")}>
                   Continue<ArrowRight className="size-4" />
                 </Button>
                 <p className="text-center text-xs text-muted-foreground">
-                  Secured · Web3 & Email Verification
+                  Secured · Web3 &amp; Email Verification
                 </p>
               </div>
             </>
@@ -103,7 +103,7 @@ export function WelcomeGate() {
               <SheetHeader>
                 <SheetTitle className="font-display text-2xl sm:text-3xl">Complete your profile</SheetTitle>
                 <SheetDescription>
-                  Enter your details to access your CENTE dashboard. Verification is only required when you transact.
+                  Enter your details to access your HalalVest dashboard. Verification is only required when you transact.
                 </SheetDescription>
               </SheetHeader>
 
@@ -213,7 +213,7 @@ export function WelcomeGate() {
                 <Button variant="ghost" className="min-h-12" onClick={() => setStep("welcome")}>
                   Back
                 </Button>
-                <Button size="lg" className="flex-1 shadow-gold" onClick={handleComplete}>
+                <Button size="lg" className="flex-1 shadow-brand" onClick={handleComplete}>
                   Access App <ArrowRight className="size-4" />
                 </Button>
               </div>
@@ -226,8 +226,8 @@ export function WelcomeGate() {
                 <span className="mx-auto grid size-16 place-items-center rounded-full bg-success/12 text-success shadow-lg">
                   <Check className="size-8" />
                 </span>
-                <h3 className="mt-5 font-display text-3xl">Welcome to CENTE</h3>
-                <p className="mt-2 text-sm text-muted-foreground">Your profile is ready. Explore features and live rates.</p>
+                <h3 className="mt-5 font-display text-3xl">Welcome to HalalVest</h3>
+                <p className="mt-2 text-sm text-muted-foreground">Your profile is ready. Explore portfolios and live rates.</p>
               </div>
             </div>
           )}

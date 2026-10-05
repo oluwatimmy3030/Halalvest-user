@@ -16,8 +16,8 @@ export default defineConfig({
     workbox: {
       navigateFallbackDenylist: [/^\/~oauth/],
       runtimeCaching: [
-        { urlPattern: ({ request }) => request.mode === "navigate", handler: "NetworkFirst", options: { cacheName: "cente-pages", networkTimeoutSeconds: 4 } },
-        { urlPattern: ({ url }) => url.origin === self.location.origin && /\.[a-f0-9]{8,}\./.test(url.pathname), handler: "CacheFirst", options: { cacheName: "cente-assets" } },
+        { urlPattern: ({ request }) => request.mode === "navigate", handler: "NetworkFirst", options: { cacheName: "halalvest-pages", networkTimeoutSeconds: 4 } },
+        { urlPattern: ({ url }) => url.origin === self.location.origin && /\.[a-f0-9]{8,}\./.test(url.pathname), handler: "CacheFirst", options: { cacheName: "halalvest-assets" } },
       ],
     },
   })],

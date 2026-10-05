@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { PageTitle, TransactionRow } from "@/components/cente/ui";
+import { PageTitle, TransactionRow } from "@/components/halalvest/ui";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { formatMoney, formatOunces } from "@/data/mock-data";
-import { useCente } from "@/state/cente-context";
+import { useHalalvest } from "@/state/halalvest-context";
 
 export default function TransactionsPage() {
-  const { transactions } = useCente();
+  const { transactions } = useHalalvest();
   const [filter, setFilter] = useState("All");
   const [selected, setSelected] = useState(null);
   const shown = filter === "All" ? transactions : transactions.filter((t) => t.category === filter);

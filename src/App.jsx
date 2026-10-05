@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
-import { AppShell } from "@/components/cente/app-shell";
-import { CenteProvider } from "@/state/cente-context";
+import { AppShell } from "@/components/halalvest/app-shell";
+import { HalalvestProvider } from "@/state/halalvest-context";
 import HomePage from "@/pages/Home";
 import WalletPage from "@/pages/Wallet";
 import TransactionsPage from "@/pages/Transactions";
@@ -12,11 +12,11 @@ import SettingsPage from "@/pages/Settings";
 import HelpPage from "@/pages/Help";
 import ProfilePage from "@/pages/Profile";
 import NotificationsPage from "@/pages/Notifications";
-import { NotFound } from "@/components/cente/not-found";
+import { NotFound } from "@/components/halalvest/not-found";
 
 function Layout() {
   return (
-    <CenteProvider>
+    <HalalvestProvider>
       <AppShell>
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -33,7 +33,7 @@ function Layout() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </AppShell>
-    </CenteProvider>
+    </HalalvestProvider>
   );
 }
 

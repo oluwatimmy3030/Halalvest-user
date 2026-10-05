@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { formatMoney, formatOunces, goldPrice, rates, swapRateLabel, virtualAccount } from "@/data/mock-data";
-import { useCente } from "@/state/cente-context";
+import { useHalalvest } from "@/state/halalvest-context";
 
 /* -------------------------------------------------------------------------- */
 /*  Swap assets & pairs                                                       */
@@ -38,7 +38,7 @@ function swapUnitRate(from, to) {
 }
 
 export function ActionFlow({ kind, open, onOpenChange, presetCurrency = "NGN" }) {
-  const { user, balances, gold, completeAction, verified, verify, verifyPhoneOtp, pinSet, setupPin } = useCente();
+  const { user, balances, gold, completeAction, verified, verify, verifyPhoneOtp, pinSet, setupPin } = useHalalvest();
   const [step, setStep] = useState("form");
   const [currency, setCurrency] = useState(presetCurrency);
   const [amount, setAmount] = useState("");
@@ -86,10 +86,10 @@ export function ActionFlow({ kind, open, onOpenChange, presetCurrency = "NGN" })
     asset === "GOLD" ? formatOunces(value) : formatMoney(value, asset);
 
   const title = {
-    fund: "Fund Wallet",
+    fund: "Add Funds",
     send: "Send Money",
     swap: `Swap ${SWAP_ASSET[swapFrom].label} → ${SWAP_ASSET[swapTo].label}`,
-    save: "Add to Safevest",
+    save: "Add to HalalVest",
     withdraw: "Withdraw Savings",
   }[kind] ?? "Transaction";
 
@@ -351,7 +351,7 @@ export function ActionFlow({ kind, open, onOpenChange, presetCurrency = "NGN" })
                         </div>
                         <div className="flex justify-between">
                           <span className="text-muted-foreground">Account Name</span>
-                          <strong>{user?.firstName} {user?.lastName} / CENTE</strong>
+                          <strong>{user?.firstName} {user?.lastName} / HalalVest</strong>
                         </div>
                         <div className="flex justify-between items-center">
                           <span className="text-muted-foreground">Account Number</span>
@@ -383,7 +383,7 @@ export function ActionFlow({ kind, open, onOpenChange, presetCurrency = "NGN" })
                         Fund with Visa, Mastercard, Apple Pay, or US Bank Transfer via secure licensed ramp.
                       </p>
                       <div className="mt-3 rounded-lg border border-border bg-card p-3 text-xs text-muted-foreground">
-                        Instant deposit · 0 extra CENTE fee · Licensed KYC
+                        Instant deposit · 0 extra HalalVest fee · Verified identity
                       </div>
                     </div>
                   )}
@@ -416,7 +416,7 @@ export function ActionFlow({ kind, open, onOpenChange, presetCurrency = "NGN" })
 
               {error && <p className="text-xs text-destructive">{error}</p>}
 
-              <Button size="lg" className="w-full shadow-gold" onClick={handleContinue}>
+              <Button size="lg" className="w-full shadow-brand" onClick={handleContinue}>
                 Continue
               </Button>
             </div>
@@ -449,7 +449,7 @@ export function ActionFlow({ kind, open, onOpenChange, presetCurrency = "NGN" })
 
               {error && <p className="text-xs text-destructive">{error}</p>}
 
-              <Button size="lg" className="w-full shadow-gold" onClick={handleVerifyOtp}>
+              <Button size="lg" className="w-full shadow-brand" onClick={handleVerifyOtp}>
                 Verify SMS Code & Continue
               </Button>
               <button
@@ -514,7 +514,7 @@ export function ActionFlow({ kind, open, onOpenChange, presetCurrency = "NGN" })
 
               {error && <p className="text-xs text-destructive">{error}</p>}
 
-              <Button size="lg" className="w-full shadow-gold" onClick={handleVerifyKyc}>
+              <Button size="lg" className="w-full shadow-brand" onClick={handleVerifyKyc}>
                 Verify with QoreID
               </Button>
               <p className="text-center text-[11px] text-muted-foreground">
@@ -575,7 +575,7 @@ export function ActionFlow({ kind, open, onOpenChange, presetCurrency = "NGN" })
                 </div>
               </div>
 
-              <Button size="lg" className="w-full shadow-gold" onClick={() => setStep("pin")}>
+              <Button size="lg" className="w-full shadow-brand" onClick={() => setStep("pin")}>
                 Authorize with PIN
               </Button>
             </div>
@@ -620,7 +620,7 @@ export function ActionFlow({ kind, open, onOpenChange, presetCurrency = "NGN" })
 
               {error && <p className="text-xs text-destructive">{error}</p>}
 
-              <Button size="lg" className="w-full shadow-gold" onClick={handleSubmit} disabled={pin.length !== 4}>
+              <Button size="lg" className="w-full shadow-brand" onClick={handleSubmit} disabled={pin.length !== 4}>
                 Confirm & Execute
               </Button>
             </div>
@@ -651,7 +651,7 @@ export function ActionFlow({ kind, open, onOpenChange, presetCurrency = "NGN" })
                     ? `You received ${fmtAsset(swapEstimatedReturn, swapTo)}`
                     : `Your ${currency} balance has been updated.`}
                 </p>
-                <Button className="mt-6 w-full shadow-gold" size="lg" onClick={() => close(false)}>
+                <Button className="mt-6 w-full shadow-brand" size="lg" onClick={() => close(false)}>
                   Done
                 </Button>
               </div>

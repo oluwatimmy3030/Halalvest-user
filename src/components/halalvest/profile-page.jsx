@@ -1,4 +1,4 @@
-// src/components/cente/profile-page.jsx
+// src/components/halalvest/profile-page.jsx
 import { useState } from "react";
 import {
   Bell,
@@ -22,11 +22,11 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
-import { useCente } from "@/state/cente-context";
+import { useHalalvest } from "@/state/halalvest-context";
 import { user } from "@/data/mock-data";
 
 export default function ProfilePage() {
-  const { verified, pinSet, verify, setupPin, reset } = useCente();
+  const { verified, pinSet, verify, setupPin, reset } = useHalalvest();
   const [sheet, setSheet] = useState(null);
   const [digits, setDigits] = useState("");
   const [bvn, setBvn] = useState("");

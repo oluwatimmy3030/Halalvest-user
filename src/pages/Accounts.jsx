@@ -1,7 +1,7 @@
 import { useEffect } from "react";
-import WalletPageInner from "@/components/cente/wallet-page";
+import WalletPageInner from "@/components/halalvest/wallet-page";
 
 export default function AccountsPage() {
-  useEffect(() => { document.title = "Accounts — CENTE"; }, []);
+  useEffect(() => { document.title = "Accounts — HalalVest"; }, []);
   return <WalletPageInner />;
 }

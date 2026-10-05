@@ -3,7 +3,7 @@ import { ChevronLeft, Landmark, Gem } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { formatMoney, formatOunces, goldPrice, rates } from "@/data/mock-data";
-import { useCente } from "@/state/cente-context";
+import { useHalalvest } from "@/state/halalvest-context";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 
 const usdTerms = [
@@ -56,8 +56,8 @@ function FormSelect({ label, value, onChange, options }) {
   );
 }
 
-export function SafevestUSD() {
-  const { createPlan } = useCente();
+export function HalalVestUSD() {
+  const { createPlan } = useHalalvest();
   const [amount, setAmount] = useState("5,000");
   const [term, setTerm] = useState(6);
   const [planOpen, setPlanOpen] = useState(false);
@@ -94,16 +94,16 @@ export function SafevestUSD() {
         <ChevronLeft className="size-4" /> Back
       </button>
       <div className="mt-3">
-        <h1 className="font-display text-3xl font-semibold">Safevest USD</h1>
+        <h1 className="font-display text-3xl font-semibold">HalalVest USD</h1>
         <p className="mt-1 text-sm text-muted-foreground">
           Choose a currency to start saving. You can fund with your local currency or Stablecoins.
         </p>
       </div>
       <div className="mt-6 space-y-5">
         <div>
-          <label className="form-label">Safevest USD Plan</label>
-          <select className="field" defaultValue="Safevest USD">
-            <option>Safevest USD</option>
+          <label className="form-label">HalalVest USD Plan</label>
+          <select className="field" defaultValue="HalalVest USD">
+            <option>HalalVest USD</option>
           </select>
         </div>
         <div>
@@ -128,7 +128,7 @@ export function SafevestUSD() {
             Term starts: {dates.start} · Matures: {dates.maturity}
           </p>
         </div>
-        <div className="grid grid-cols-[1fr_auto] items-center gap-4 rounded-xl border border-border bg-[#FFFDF5] p-5">
+        <div className="grid grid-cols-[1fr_auto] items-center gap-4 rounded-xl border border-border bg-cream p-5">
           <div>
             <p className="text-sm font-medium text-muted-foreground">Total Returns</p>
             <div className="mt-1 flex items-center gap-2">
@@ -138,7 +138,7 @@ export function SafevestUSD() {
               </span>
             </div>
           </div>
-          <Button size="lg" className="bg-[#3E2723] text-white hover:bg-[#4E342E]" onClick={submit}>
+          <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90" onClick={submit}>
             Pay Now
           </Button>
         </div>
@@ -147,7 +147,7 @@ export function SafevestUSD() {
         <SheetContent side="bottom" className="mx-auto max-h-[60vh] overflow-y-auto rounded-t-2xl bg-background sm:max-w-xl">
           <SheetHeader>
             <SheetTitle>Plan Created</SheetTitle>
-            <SheetDescription>Your Safevest USD plan has been set up.</SheetDescription>
+            <SheetDescription>Your HalalVest USD plan has been set up.</SheetDescription>
           </SheetHeader>
           <div className="grid min-h-[200px] place-items-center px-5 pb-8 pt-6 text-center">
             <div>
@@ -155,7 +155,7 @@ export function SafevestUSD() {
                 <Landmark className="size-8" />
               </div>
               <h3 className="mt-5 font-display text-3xl">Plan created</h3>
-              <p className="mt-2 text-sm text-muted-foreground">Your Safevest USD plan is pending and ready to review.</p>
+              <p className="mt-2 text-sm text-muted-foreground">Your HalalVest USD plan is pending and ready to review.</p>
             </div>
           </div>
         </SheetContent>
@@ -164,8 +164,8 @@ export function SafevestUSD() {
   );
 }
 
-export function SafevestNGN() {
-  const { createPlan } = useCente();
+export function HalalVestNGN() {
+  const { createPlan } = useHalalvest();
   const [amount, setAmount] = useState("");
   const [term, setTerm] = useState(6);
   const [planOpen, setPlanOpen] = useState(false);
@@ -203,16 +203,16 @@ export function SafevestNGN() {
         <ChevronLeft className="size-4" /> Back
       </button>
       <div className="mt-3">
-        <h1 className="font-display text-3xl font-semibold">Safevest NGN</h1>
+        <h1 className="font-display text-3xl font-semibold">HalalVest NGN</h1>
         <p className="mt-1 text-sm text-muted-foreground">
           Choose a currency to start saving. You can fund with your local currency or Stablecoins.
         </p>
       </div>
       <div className="mt-6 space-y-5">
         <div>
-          <label className="form-label">Safevest NGN Plan</label>
-          <select className="field" defaultValue="Safevest NGN">
-            <option>Safevest NGN</option>
+          <label className="form-label">HalalVest NGN Plan</label>
+          <select className="field" defaultValue="HalalVest NGN">
+            <option>HalalVest NGN</option>
           </select>
         </div>
         <div>
@@ -237,7 +237,7 @@ export function SafevestNGN() {
             Term starts: {dates.start} · Matures: {dates.maturity}
           </p>
         </div>
-        <div className="grid grid-cols-[1fr_auto] items-center gap-4 rounded-xl border border-border bg-[#FFFDF5] p-5">
+        <div className="grid grid-cols-[1fr_auto] items-center gap-4 rounded-xl border border-border bg-cream p-5">
           <div>
             <p className="text-sm font-medium text-muted-foreground">Total Returns</p>
             <div className="mt-1 flex items-center gap-2">
@@ -247,7 +247,7 @@ export function SafevestNGN() {
               </span>
             </div>
           </div>
-          <Button size="lg" className="bg-[#3E2723] text-white hover:bg-[#4E342E]" onClick={submit}>
+          <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90" onClick={submit}>
             Pay Now
           </Button>
         </div>
@@ -256,7 +256,7 @@ export function SafevestNGN() {
         <SheetContent side="bottom" className="mx-auto max-h-[60vh] overflow-y-auto rounded-t-2xl bg-background sm:max-w-xl">
           <SheetHeader>
             <SheetTitle>Plan Created</SheetTitle>
-            <SheetDescription>Your Safevest NGN plan has been set up.</SheetDescription>
+            <SheetDescription>Your HalalVest NGN plan has been set up.</SheetDescription>
           </SheetHeader>
           <div className="grid min-h-[200px] place-items-center px-5 pb-8 pt-6 text-center">
             <div>
@@ -264,7 +264,7 @@ export function SafevestNGN() {
                 <Landmark className="size-8" />
               </div>
               <h3 className="mt-5 font-display text-3xl">Plan created</h3>
-              <p className="mt-2 text-sm text-muted-foreground">Your Safevest NGN plan is pending and ready to review.</p>
+              <p className="mt-2 text-sm text-muted-foreground">Your HalalVest NGN plan is pending and ready to review.</p>
             </div>
           </div>
         </SheetContent>
@@ -273,8 +273,8 @@ export function SafevestNGN() {
   );
 }
 
-export function SafevestGold() {
-  const { gold, plans, createPlan } = useCente();
+export function HalalVestGold() {
+  const { gold, plans, createPlan } = useHalalvest();
   const [view, setView] = useState("overview");
   const [tab, setTab] = useState("Active Plan");
   const [amount, setAmount] = useState("");
@@ -318,7 +318,7 @@ export function SafevestGold() {
             <ChevronLeft className="size-4" /> Back
           </button>
           <div className="mt-3">
-            <h1 className="font-display text-3xl font-semibold">Safevest Gold</h1>
+            <h1 className="font-display text-3xl font-semibold">HalalVest Gold</h1>
             <p className="mt-1 text-sm text-muted-foreground">Choose a currency to start saving. You can fund with your local currency or Stablecoins.</p>
           </div>
           <div className="mt-6 grid grid-cols-3 gap-3">
@@ -365,7 +365,7 @@ export function SafevestGold() {
             ) : (
               <div className="panel flex flex-col items-center gap-3 py-12 text-center">
                 <Gem className="size-10 text-muted-foreground/30" />
-                <p className="text-sm text-muted-foreground">You don&apos;t have an active Safevest plan yet. Start by choosing an amount, currency and duration.</p>
+                <p className="text-sm text-muted-foreground">You don&apos;t have an active HalalVest plan yet. Start by choosing an amount, currency and duration.</p>
                 <Button size="sm" onClick={() => setView("create")}>Create New Plan</Button>
               </div>
             )}
@@ -377,8 +377,8 @@ export function SafevestGold() {
             <ChevronLeft className="size-4" /> Back
           </button>
           <div className="mt-3">
-            <h1 className="font-display text-3xl font-semibold">Create your first Safevest Gold Plan</h1>
-            <p className="mt-1 text-sm text-muted-foreground">You don&apos;t have an active Safevest plan yet. Start by choosing an amount, currency and duration.</p>
+            <h1 className="font-display text-3xl font-semibold">Create your first HalalVest Gold Plan</h1>
+            <p className="mt-1 text-sm text-muted-foreground">You don&apos;t have an active HalalVest plan yet. Start by choosing an amount, currency and duration.</p>
           </div>
           <div className="mt-6 space-y-5">
             <div>
@@ -408,7 +408,7 @@ export function SafevestGold() {
                 <option>Safe Lock (locked plan)</option>
               </select>
             </div>
-            <Button className="w-full bg-[#3E2723] text-white hover:bg-[#4E342E]" size="lg" onClick={() => { submit(); setCreated(true); }}>BUY GOLD</Button>
+            <Button className="w-full bg-gold text-emerald-dark hover:bg-gold/90" size="lg" onClick={() => { submit(); setCreated(true); }}>BUY GOLD</Button>
           </div>
           <Sheet open={created} onOpenChange={setCreated}>
             <SheetContent side="bottom" className="mx-auto max-h-[50vh] overflow-y-auto rounded-t-2xl bg-background sm:max-w-xl">
@@ -419,7 +419,7 @@ export function SafevestGold() {
                 <div>
                   <div className="mx-auto grid size-16 place-items-center rounded-full bg-success/12 text-success"><Gem className="size-8" /></div>
                   <h3 className="mt-5 font-display text-3xl">Gold purchased</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">Your gold has been added to your Safevest Gold holding.</p>
+                  <p className="mt-2 text-sm text-muted-foreground">Your gold has been added to your HalalVest Gold holding.</p>
                 </div>
               </div>
             </SheetContent>

@@ -1,4 +1,4 @@
-// src/components/cente/wallet-page.jsx
+// src/components/halalvest/wallet-page.jsx
 import { useState } from "react";
 import {
   ArrowDownToLine,
@@ -20,13 +20,11 @@ import {
   rates,
   user,
 } from "@/data/mock-data";
-import { useCente } from "@/state/cente-context";
+import { useHalalvest } from "@/state/halalvest-context";
 
 /* -------------------------------------------------------------------------- */
 /*  Spiral background                                                         */
 /* -------------------------------------------------------------------------- */
-
-const GOLD = "#96691a";
 
 // Archimedean spiral path, built once at module load.
 function buildSpiral({ cx, cy, turns, gap, step = 0.12 }) {
@@ -68,7 +66,7 @@ function SpiralBackground({ path, viewBox, align }) {
 /* -------------------------------------------------------------------------- */
 
 export default function WalletPage() {
-  const { balances, gold, transactions } = useCente();
+  const { balances, gold, transactions } = useHalalvest();
   const [flow, setFlow] = useState(null);
 
   const total = balances.NGN + balances.USD * rates.NGN_USD;
@@ -80,16 +78,13 @@ export default function WalletPage() {
       <PageTitle
         eyebrow="Accounts"
         title="Your Accounts"
-        copy="USD and NGN wallets, account details, and your Safevest Gold holding."
+        copy="USD and NGN balances, account details, and your HalalVest Gold holding."
       />
 
       {/* ---------------------------------------------------------------- */}
       {/*  Total balance card                                               */}
       {/* ---------------------------------------------------------------- */}
-      <div
-        className="relative overflow-hidden rounded-3xl p-5 text-white sm:p-7"
-        style={{ backgroundColor: GOLD }}
-      >
+      <div className="balance-card relative overflow-hidden rounded-3xl p-5 text-white sm:p-7">
         <SpiralBackground
           path={SPIRAL_WIDE}
           viewBox="0 0 400 260"
@@ -97,7 +92,7 @@ export default function WalletPage() {
         />
 
         <div className="relative z-10">
-          <p className="text-sm text-white/85">Total wallet balance</p>
+          <p className="text-sm text-white/85">Total portfolio value</p>
           <h2 className="mt-2 truncate font-display text-3xl font-semibold tabular-nums sm:text-4xl">
             {formatMoney(total)}
           </h2>
@@ -170,8 +165,7 @@ export default function WalletPage() {
         {/* Gold card — full tile link */}
         <Link
           to="/wealth?product=GOLD"
-          className="relative flex min-h-56 flex-col overflow-hidden rounded-3xl p-5 text-white transition-transform hover:-translate-y-0.5 sm:p-6"
-          style={{ backgroundColor: GOLD }}
+          className="gold-card relative flex min-h-56 flex-col overflow-hidden rounded-3xl p-5 text-white transition-transform hover:-translate-y-0.5 sm:p-6"
         >
           <SpiralBackground
             path={SPIRAL_TALL}
@@ -185,7 +179,7 @@ export default function WalletPage() {
             </span>
 
             <div className="mt-auto pt-6">
-              <p className="text-sm text-white/85">Safevest Gold</p>
+              <p className="text-sm text-white/85">HalalVest Gold</p>
               <h2 className="mt-1 truncate font-display text-2xl font-semibold tabular-nums sm:text-3xl">
                 {formatOunces(gold.ounces)}
               </h2>

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
-import { HomePage as HomePageInner } from "@/components/cente/home-page";
+import { HomePage as HomePageInner } from "@/components/halalvest/home-page";
 
 export default function HomePage() {
-  useEffect(() => { document.title = "Home — CENTE"; }, []);
+  useEffect(() => { document.title = "Dashboard — HalalVest"; }, []);
   return <HomePageInner />;
 }

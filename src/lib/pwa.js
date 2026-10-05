@@ -8,7 +8,7 @@ const isPreviewHost = (hostname) =>
   hostname === "beta.lovable.dev" ||
   hostname.endsWith(".beta.lovable.dev");
 
-export async function registerCentePwa() {
+export async function registerHalalvestPwa() {
   if (!("serviceWorker" in navigator)) return;
   const disabled = !import.meta.env.PROD || window.self !== window.top || isPreviewHost(location.hostname) || new URLSearchParams(location.search).has("sw");
   if (disabled) {

@@ -1,4 +1,4 @@
-// src/components/cente/wealth-page.jsx
+// src/components/halalvest/wealth-page.jsx
 import { useEffect, useMemo, useState } from "react";
 import {
   Gem,
@@ -14,9 +14,9 @@ import {
 import { useSearchParams } from "react-router-dom";
 import { ActionFlow } from "./action-flow";
 import { PageTitle } from "./ui";
-import { SafevestUSD, SafevestNGN, SafevestGold } from "./safevest-forms";
+import { HalalVestUSD, HalalVestNGN, HalalVestGold } from "./halalvest-forms";
 import { formatMoney, formatOunces, goldPrice } from "@/data/mock-data";
-import { useCente } from "@/state/cente-context";
+import { useHalalvest } from "@/state/halalvest-context";
 
 /* -------------------------------------------------------------------------- */
 /*  Config                                                                    */
@@ -25,7 +25,7 @@ import { useCente } from "@/state/cente-context";
 const TABS = [
   {
     key: "USD",
-    label: "Safevest USD",
+    label: "HalalVest USD",
     shortLabel: "USD",
     icon: Wallet,
     accent: "from-sky-500/15 to-sky-500/0",
@@ -33,7 +33,7 @@ const TABS = [
   },
   {
     key: "NGN",
-    label: "Safevest NGN",
+    label: "HalalVest NGN",
     shortLabel: "NGN",
     icon: Coins,
     accent: "from-emerald-500/15 to-emerald-500/0",
@@ -41,7 +41,7 @@ const TABS = [
   },
   {
     key: "GOLD",
-    label: "Safevest Gold",
+    label: "HalalVest Gold",
     shortLabel: "Gold",
     icon: Gem,
     accent: "from-amber-500/15 to-amber-500/0",
@@ -106,7 +106,7 @@ export default function WealthPage() {
   const requested = params.get("product");
   const [module, setModule] = useState(isValidTab(requested) ? requested : "USD");
   const [flow, setFlow] = useState(null);
-  const { gold, plans, transactions } = useCente();
+  const { gold, plans, transactions } = useHalalvest();
 
   useEffect(() => {
     if (isValidTab(requested)) setModule(requested);
@@ -126,9 +126,9 @@ export default function WealthPage() {
   return (
     <div className="mx-auto w-full max-w-6xl space-y-6 pb-20 sm:space-y-8 [contain:layout]">
       <PageTitle
-        eyebrow="Safevest"
+        eyebrow="HalalVest"
         title="Savings & Gold"
-        copy="Manage your USD, NGN savings plans and Gold investments."
+        copy="Manage your USD, NGN portfolios and Gold investments."
       />
 
       {/* ---------------------------------------------------------------- */}
@@ -139,7 +139,7 @@ export default function WealthPage() {
           {/* Tabs — fixed height, no scroll, no wrap */}
           <div
             role="tablist"
-            aria-label="Safevest module"
+            aria-label="HalalVest module"
             className="grid h-11 w-full grid-cols-3 gap-1 rounded-xl bg-muted/50 p-1 sm:w-auto sm:grid-cols-none sm:grid-flow-col"
           >
             {TABS.map((t) => {
@@ -214,9 +214,9 @@ export default function WealthPage() {
         </header>
 
         <div className="p-4 sm:p-6">
-          {module === "USD" && <SafevestUSD />}
-          {module === "NGN" && <SafevestNGN />}
-          {module === "GOLD" && <SafevestGold />}
+          {module === "USD" && <HalalVestUSD />}
+          {module === "NGN" && <HalalVestNGN />}
+          {module === "GOLD" && <HalalVestGold />}
         </div>
       </section>
 
@@ -227,7 +227,7 @@ export default function WealthPage() {
         <div className="mb-4 flex items-end justify-between gap-3">
           <div className="min-w-0">
             <h2 className="truncate text-lg font-semibold tracking-tight">
-              Your Safevest Plans
+              Your HalalVest Plans
             </h2>
             <p className="truncate text-xs text-muted-foreground">
               {plans.length > 0
@@ -294,7 +294,7 @@ function PlanCard({ plan }) {
             {plan.name}
           </p>
           <p className="mt-0.5 truncate text-[10px] font-medium uppercase tracking-wider text-muted-foreground">
-            Safevest {plan.product}
+            HalalVest {plan.product}
           </p>
         </div>
         <StatusBadge status={plan.status} />
@@ -333,7 +333,7 @@ function EmptyPlans() {
       <div>
         <p className="text-sm font-medium">No plans yet</p>
         <p className="mt-0.5 text-xs text-muted-foreground">
-          Use the module above to create your first Safevest plan.
+          Use the module above to create your first HalalVest plan.
         </p>
       </div>
     </div>
@@ -356,7 +356,7 @@ function ActivityList({ transactions }) {
           </h2>
           <p className="truncate text-xs text-muted-foreground">
             Your latest {items.length} transaction
-            {items.length === 1 ? "" : "s"} across all Safevest products
+            {items.length === 1 ? "" : "s"} across all HalalVest products
           </p>
         </div>
       </div>

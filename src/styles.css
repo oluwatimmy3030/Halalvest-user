@@ -5,13 +5,16 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Design system definition.
+ * HalalVest design system.
  *
- * The @theme inline block maps CSS custom properties to Tailwind utility
- * classes (e.g. --color-primary -> bg-primary, text-primary).
+ * Palette is taken verbatim from the live HalalVest identity (halalvest.net):
+ * deep emerald primary, gold accent, cream neutrals, dark green-black text.
+ * HSL source values are noted beside each token; all values MUST be oklch.
  *
- * The :root and .dark blocks define the actual color values using oklch.
- * All colors MUST use oklch format.
+ * shadcn semantics are preserved:
+ *   --primary  = brand action colour (deep emerald) -> bg-primary, buttons, active nav
+ *   --accent   = soft surface tint used for hover/selected states
+ *   --gold     = signature brand accent, used for gold/metals surfaces and emphasis
  *
  * To add a new semantic color:
  * 1. Add the variable to :root (light value) and .dark (dark value)
@@ -63,39 +66,81 @@
   --color-sidebar-ring: var(--sidebar-ring);
   --color-success: var(--success);
   --color-warning: var(--warning);
+
+  /* HalalVest brand palette */
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-gold-light: var(--gold-light);
+  --color-gold-deep: var(--gold-deep);
+  --color-emerald: var(--emerald);
+  --color-emerald-dark: var(--emerald-dark);
+  --color-emerald-light: var(--emerald-light);
+  --color-emerald-tint: var(--emerald-tint);
+  --color-cream: var(--cream);
+  --color-cream-dark: var(--cream-dark);
+
+  --shadow-brand: var(--shadow-brand);
   --shadow-gold: var(--shadow-gold);
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(0.982 0.012 88);
-  --foreground: oklch(0.235 0.014 72);
-  --card: oklch(0.998 0.004 88);
-  --card-foreground: oklch(0.235 0.014 72);
-  --popover: oklch(0.998 0.004 88);
-  --popover-foreground: oklch(0.235 0.014 72);
-  --primary: oklch(0.792 0.126 89);
-  --primary-foreground: oklch(0.22 0.018 75);
-  --secondary: oklch(0.955 0.028 88);
-  --secondary-foreground: oklch(0.34 0.025 74);
-  --muted: oklch(0.958 0.015 86);
-  --muted-foreground: oklch(0.52 0.025 72);
-  --accent: oklch(0.936 0.052 88);
-  --accent-foreground: oklch(0.38 0.07 80);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.88 0.028 84);
-  --input: oklch(0.84 0.035 84);
-  --ring: oklch(0.68 0.14 82);
-  --success: oklch(0.53 0.125 153);
-  --warning: oklch(0.62 0.14 70);
-  --shadow-gold: 0 14px 40px color-mix(in oklab, var(--primary) 16%, transparent);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.992 0.008 88);
+  --radius: 0.75rem;
+
+  /* Neutrals — cream surfaces, dark green-black text */
+  --background: oklch(0.987 0.0031 91.44); /* hsl(45 30% 98%) */
+  --foreground: oklch(0.2577 0.027 170.99); /* hsl(160 30% 12%) */
+  --card: oklch(0.9939 0.0021 91.43); /* hsl(45 40% 99%) */
+  --card-foreground: oklch(0.2577 0.027 170.99);
+  --popover: oklch(0.9939 0.0021 91.43);
+  --popover-foreground: oklch(0.2577 0.027 170.99);
+
+  /* Primary — deep emerald, the HalalVest action colour */
+  --primary: oklch(0.4575 0.0843 166.16); /* hsl(160 60% 25%) */
+  --primary-foreground: oklch(0.987 0.0031 91.44); /* hsl(45 30% 98%) */
+
+  --secondary: oklch(0.958 0.0076 164.93); /* hsl(150 20% 94%) */
+  --secondary-foreground: oklch(0.3528 0.0411 170.48); /* hsl(160 30% 20%) */
+
+  --muted: oklch(0.9426 0.0077 164.93); /* hsl(150 15% 92%) */
+  --muted-foreground: oklch(0.5836 0.0427 172.23); /* hsl(160 15% 45%) */
+
+  /* Accent stays a soft tint so hover/selected states stay subtle */
+  --accent: oklch(0.9528 0.0123 166.55); /* hsl(152 28% 93%) */
+  --accent-foreground: oklch(0.3062 0.0342 170.68); /* hsl(160 30% 16%) */
+
+  --destructive: oklch(0.6368 0.2078 25.33); /* hsl(0 84.2% 60.2%) */
+  --destructive-foreground: oklch(0.9838 0.0035 247.86); /* hsl(210 40% 98%) */
+
+  --border: oklch(0.9156 0.0154 164.69); /* hsl(150 20% 88%) */
+  --input: oklch(0.9156 0.0154 164.69); /* hsl(150 20% 88%) */
+  --ring: oklch(0.4575 0.0843 166.16); /* hsl(160 60% 25%) */
+
+  /* Brand accents */
+  --gold: oklch(0.8008 0.1541 82.91); /* hsl(42 85% 55%) */
+  --gold-soft: oklch(0.953 0.0409 90.38); /* hsl(44 80% 90%) */
+  --gold-light: oklch(0.8679 0.1168 91.42); /* hsl(45 80% 70%) */
+  --gold-deep: oklch(0.5511 0.1074 78.89); /* hsl(40 75% 33%) — readable gold on cream */
+  --emerald: oklch(0.4575 0.0843 166.16); /* hsl(160 60% 25%) */
+  --emerald-dark: oklch(0.3789 0.0726 165.44); /* hsl(160 70% 18%) */
+  --emerald-light: oklch(0.6129 0.1143 161.9); /* hsl(155 50% 40%) */
+  --emerald-tint: oklch(0.9558 0.0169 170.11); /* hsl(156 40% 93%) */
+  --cream: oklch(0.974 0.0063 91.47); /* hsl(45 30% 96%) */
+  --cream-dark: oklch(0.9449 0.0085 91.49); /* hsl(45 20% 92%) */
+
+  --success: oklch(0.6023 0.1178 161.21); /* hsl(155 55% 38%) */
+  --warning: oklch(0.7585 0.1524 69.32); /* hsl(35 85% 55%) */
+
+  --shadow-brand: 0 14px 40px color-mix(in oklab, var(--emerald) 18%, transparent);
+  --shadow-gold: 0 14px 40px color-mix(in oklab, var(--gold) 22%, transparent);
+
+  /* Charts — emerald/gold family */
+  --chart-1: oklch(0.4575 0.0843 166.16); /* emerald */
+  --chart-2: oklch(0.8008 0.1541 82.91); /* gold */
+  --chart-3: oklch(0.6129 0.1143 161.9); /* emerald-light */
+  --chart-4: oklch(0.8679 0.1168 91.42); /* gold-light */
+  --chart-5: oklch(0.3789 0.0726 165.44); /* emerald-dark */
+
+  --sidebar: oklch(0.9848 0 89.88); /* hsl(0 0% 98%) */
   --sidebar-foreground: var(--foreground);
   --sidebar-primary: var(--primary);
   --sidebar-primary-foreground: var(--primary-foreground);
@@ -105,6 +150,64 @@
   --sidebar-ring: var(--ring);
 }
 
+.dark {
+  --background: oklch(0.2069 0.0193 171.47); /* hsl(160 30% 8%) */
+  --foreground: oklch(0.9675 0.0079 91.48); /* hsl(45 30% 95%) */
+  --card: oklch(0.2539 0.023 171.58); /* hsl(160 25% 12%) */
+  --card-foreground: oklch(0.9675 0.0079 91.48);
+  --popover: oklch(0.2539 0.023 171.58);
+  --popover-foreground: oklch(0.9675 0.0079 91.48);
+
+  --primary: oklch(0.668 0.1255 161.8); /* hsl(155 50% 45%) */
+  --primary-foreground: oklch(0.2069 0.0193 171.47);
+
+  --secondary: oklch(0.319 0.0263 171.9); /* hsl(160 20% 18%) */
+  --secondary-foreground: oklch(0.9348 0.0158 91.55); /* hsl(45 30% 90%) */
+
+  --muted: oklch(0.3356 0.022 172.51); /* hsl(160 15% 20%) */
+  --muted-foreground: oklch(0.705 0.0404 163.54); /* hsl(150 15% 60%) */
+
+  --accent: oklch(0.3356 0.022 172.51);
+  --accent-foreground: oklch(0.9675 0.0079 91.48);
+
+  --destructive: oklch(0.3959 0.1331 25.72); /* hsl(0 62.8% 30.6%) */
+  --destructive-foreground: oklch(0.9838 0.0035 247.86);
+
+  --border: oklch(0.3411 0.0287 171.83); /* hsl(160 20% 20%) */
+  --input: oklch(0.3411 0.0287 171.83);
+  --ring: oklch(0.668 0.1255 161.8);
+
+  --gold: oklch(0.7586 0.1491 82.14); /* hsl(42 75% 50%) */
+  --gold-soft: oklch(0.326 0.0335 87.31);
+  --gold-light: oklch(0.7832 0.0786 87.33);
+  --gold-deep: oklch(0.8374 0.0763 87.42);
+  --emerald: oklch(0.668 0.1255 161.8);
+  --emerald-dark: oklch(0.3789 0.0726 165.44);
+  --emerald-light: oklch(0.7506 0.1096 164.36);
+  --emerald-tint: oklch(0.3356 0.022 172.51);
+  --cream: oklch(0.3356 0.022 172.51);
+  --cream-dark: oklch(0.319 0.0263 171.9);
+
+  --success: oklch(0.668 0.1255 161.8);
+  --warning: oklch(0.7586 0.1491 82.14);
+
+  --shadow-brand: 0 14px 40px color-mix(in oklab, var(--primary) 26%, transparent);
+  --shadow-gold: 0 14px 40px color-mix(in oklab, var(--gold) 24%, transparent);
+
+  --chart-1: oklch(0.668 0.1255 161.8);
+  --chart-2: oklch(0.7586 0.1491 82.14);
+  --chart-3: oklch(0.7506 0.1096 164.36);
+  --chart-4: oklch(0.7832 0.0786 87.33);
+  --chart-5: oklch(0.3789 0.0726 165.44);
+
+  --sidebar: oklch(0.2276 0.0176 172.09); /* hsl(160 22% 10%) */
+  --sidebar-foreground: oklch(0.9675 0.0079 91.48);
+  --sidebar-accent: oklch(0.3356 0.022 172.51);
+  --sidebar-accent-foreground: oklch(0.9675 0.0079 91.48);
+  --sidebar-border: oklch(0.3356 0.022 172.51);
+  --sidebar-ring: oklch(0.668 0.1255 161.8);
+}
+
 @layer base {
   * {
     border-color: var(--color-border);
@@ -112,7 +215,7 @@
 
   body {
     background-color: var(--color-background);
-    background-image: linear-gradient(118deg, transparent 0 42%, color-mix(in oklab, var(--primary) 4%, transparent) 43%, transparent 46%), radial-gradient(circle at 100% 0%, color-mix(in oklab, var(--primary) 9%, transparent), transparent 30%);
+    background-image: linear-gradient(118deg, transparent 0 42%, color-mix(in oklab, var(--emerald) 4%, transparent) 43%, transparent 46%), radial-gradient(circle at 100% 0%, color-mix(in oklab, var(--gold) 9%, transparent), transparent 30%);
     background-attachment: fixed;
     color: var(--color-foreground);
     font-family: var(--font-sans);
@@ -123,13 +226,13 @@
 }
 
 @utility panel { border: 1px solid var(--border); background: color-mix(in oklab, var(--card) 96%, transparent); border-radius: var(--radius); box-shadow: 0 8px 24px color-mix(in oklab, var(--foreground) 4%, transparent); }
-@utility balance-card { background: radial-gradient(circle at 88% 8%, color-mix(in oklab, white 38%, transparent), transparent 27%), linear-gradient(135deg, oklch(0.86 0.115 91), oklch(0.735 0.145 82)); border: 1px solid color-mix(in oklab, var(--primary) 75%, var(--foreground)); box-shadow: var(--shadow-gold); }
+@utility balance-card { background: radial-gradient(circle at 88% 8%, color-mix(in oklab, white 22%, transparent), transparent 27%), linear-gradient(135deg, var(--emerald), var(--emerald-dark)); border: 1px solid color-mix(in oklab, var(--emerald-dark) 70%, black); box-shadow: var(--shadow-brand); }
+@utility gold-card { background: radial-gradient(circle at 88% 8%, color-mix(in oklab, white 34%, transparent), transparent 27%), linear-gradient(135deg, var(--gold-light), var(--gold)); border: 1px solid color-mix(in oklab, var(--gold-deep) 55%, var(--gold)); box-shadow: var(--shadow-gold); }
 @utility currency-pill { min-height: 2.75rem; min-width: 4rem; border: 1px solid var(--border); border-radius: .65rem; padding: 0 .9rem; color: var(--muted-foreground); font-size: .75rem; font-weight: 700; }
-@utility currency-pill-active { min-height: 2.75rem; min-width: 4rem; border: 1px solid color-mix(in oklab, var(--primary) 60%, transparent); border-radius: .65rem; padding: 0 .9rem; color: var(--primary); background: color-mix(in oklab, var(--primary) 10%, transparent); font-size: .75rem; font-weight: 700; }
+@utility currency-pill-active { min-height: 2.75rem; min-width: 4rem; border: 1px solid color-mix(in oklab, var(--emerald) 60%, transparent); border-radius: .65rem; padding: 0 .9rem; color: var(--primary); background: color-mix(in oklab, var(--emerald) 10%, transparent); font-size: .75rem; font-weight: 700; }
 @utility choice { min-height: 3rem; border: 1px solid var(--border); border-radius: .65rem; color: var(--muted-foreground); font-size: .875rem; }
-@utility choice-active { min-height: 3rem; border: 1px solid color-mix(in oklab, var(--primary) 55%, transparent); border-radius: .65rem; color: var(--primary); background: color-mix(in oklab, var(--primary) 10%, transparent); font-size: .875rem; font-weight: 600; }
+@utility choice-active { min-height: 3rem; border: 1px solid color-mix(in oklab, var(--emerald) 55%, transparent); border-radius: .65rem; color: var(--primary); background: color-mix(in oklab, var(--emerald) 10%, transparent); font-size: .875rem; font-weight: 600; }
 @utility form-label { display:block; margin-bottom:.5rem; color:var(--muted-foreground); font-size:.75rem; font-weight:600; text-transform:uppercase; }
 @utility field { min-height:3rem; width:100%; border:1px solid var(--input); border-radius:.65rem; background:var(--card); padding:0 .85rem; font-size:.875rem; }
 @utility amount-field { display:grid; grid-template-columns:auto minmax(0,1fr); align-items:center; gap:.5rem; min-height:4rem; border:1px solid var(--input); border-radius:.75rem; padding:0 1rem; font-size:1.5rem; font-weight:600; }
 @utility keypad { display:grid; min-height:3.5rem; place-items:center; border-radius:.75rem; background:var(--secondary); font-size:1.125rem; font-weight:600; transition:.15s; &:active { transform:scale(.95); background:var(--accent); } }
-

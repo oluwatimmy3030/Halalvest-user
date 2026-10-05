@@ -1,4 +1,4 @@
-// src/components/cente/ui.jsx
+// src/components/halalvest/ui.jsx
 import {
   ArrowDownLeft,
   ArrowUpRight,

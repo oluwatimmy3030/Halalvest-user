@@ -1,27 +1,27 @@
 import { Link, useLocation } from "react-router-dom";
 import { Bell, Building2, CircleHelp, Home, Landmark, Menu, ChevronDown, ReceiptText, Send, Settings, TrendingUp } from "lucide-react";
 import { Brand } from "./brand";
-import { useCente } from "@/state/cente-context";
+import { useHalalvest } from "@/state/halalvest-context";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { useState } from "react";
 
 const nav = [
-  { to: "/", label: "Dashboard", icon: Home }, { to: "/stocks", label: "Stocks & Shares", icon: TrendingUp }, { to: "/wealth", label: "Wealth", icon: Landmark },
+  { to: "/", label: "Dashboard", icon: Home }, { to: "/stocks", label: "Halal Equities", icon: TrendingUp }, { to: "/wealth", label: "Investments", icon: Landmark },
   { to: "/send", label: "Send Money", icon: Send }, { to: "/transactions", label: "Transactions", icon: ReceiptText }, { to: "/accounts", label: "Accounts", icon: Building2 },
   { to: "/settings", label: "Settings", icon: Settings }, { to: "/help", label: "Help", icon: CircleHelp },
 ];
 const mobileNav = [nav[0], nav[1], nav[2], nav[3]];
 
 const wealthChildren = [
-  { to: "/wealth?product=USD", label: "Safevest USD", icon: Landmark },
-  { to: "/wealth?product=NGN", label: "Safevest NGN", icon: Landmark },
-  { to: "/wealth?product=GOLD", label: "Safevest Gold", icon: Landmark },
+  { to: "/wealth?product=USD", label: "HalalVest USD", icon: Landmark },
+  { to: "/wealth?product=NGN", label: "HalalVest NGN", icon: Landmark },
+  { to: "/wealth?product=GOLD", label: "HalalVest Gold", icon: Landmark },
 ];
 
 export function AppShell({ children }) {
   const { pathname } = useLocation();
-  const { notifications } = useCente();
+  const { notifications } = useHalalvest();
   const unread = notifications.filter((n) => !n.read).length;
   const [more, setMore] = useState(false);
   const [wealthOpen, setWealthOpen] = useState(false);
@@ -61,10 +61,10 @@ export function AppShell({ children }) {
       <header className="sticky top-0 z-30 border-b border-border/70 bg-background/92 backdrop-blur-xl">
         <div className="mx-auto grid h-18 max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center px-4 sm:px-7">
           <div className="lg:hidden"><Brand /></div>
-          <div className="hidden lg:block"><p className="text-xs text-muted-foreground">CENTE user account</p><p className="text-sm font-medium">Your wealth, in one place</p></div>
+          <div className="hidden lg:block"><p className="text-xs text-muted-foreground">HalalVest user account</p><p className="text-sm font-medium">Halal &amp; ethical investing</p></div>
           <div className="flex items-center gap-2">
             <Button asChild variant="ghost" size="icon" className="relative"><Link to="/notifications" aria-label="Notifications"><Bell />{unread > 0 && <span className="absolute right-1 top-1 size-2 rounded-full bg-primary" />}</Link></Button>
-            <Link to="/accounts" className="grid size-10 place-items-center rounded-full bg-primary text-sm font-semibold text-primary-foreground shadow-gold">SA</Link>
+            <Link to="/accounts" className="grid size-10 place-items-center rounded-full bg-primary text-sm font-semibold text-primary-foreground shadow-brand">SA</Link>
           </div>
         </div>
       </header>

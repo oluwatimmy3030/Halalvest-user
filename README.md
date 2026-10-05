@@ -1,6 +1,6 @@
-# CENTE Wealth Hub
+# HalalVest
 
-Build a complete mobile-first React + Vite Progressive Web App (PWA) for the CENTE user application.
+Build a complete mobile-first React + Vite Progressive Web App (PWA) for the HalalVest user application.
 
 This is the USER-SIDE APPLICATION ONLY.
 
@@ -72,17 +72,24 @@ Make the PWA installable and ensure the application works properly on mobile, ta
 
 2. PRODUCT DIRECTION
 
-CENTE is a digital wealth and payments application.
+HalalVest is a global, AI-powered halal and ethical investment platform.
+
+It helps Muslims and values-based investors grow wealth across multiple asset classes while
+monitoring compliance, portfolio performance and zakat obligations.
 
 V1 supports:
 
-NGN
+Halal equities and stocks
 
-USD
+Precious metals
 
-USDT
+Halal cryptocurrency
 
-Gold through Safevest Gold
+Sukuk and fixed-income alternatives
+
+Real estate
+
+Multi-currency and cross-border investing, including NGN, USD and USDT
 
 Do NOT include active EUR, USDC, or other asset products in this V1 user application.
 
@@ -94,13 +101,18 @@ We are NOT redesigning it screen-for-screen.
 
 Use its existing functionality and flows as inspiration, but create a significantly cleaner, more modern, polished React PWA.
 
-The existing CENTE brand identity and color direction should remain recognizable.
+The existing HalalVest brand identity and color direction should remain recognizable.
 
-Reference the current CENTE visual identity from:
+Reference the current HalalVest visual identity from:
 
-https://www.gocente.com/
+https://halalvest.net/
 
-Use the CENTE brand direction together with the provided gold/marble visual framework.
+Use the HalalVest brand direction: deep emerald primary, gold accents, cream neutrals and
+dark green-black text. All color values live in `src/styles.css` as oklch tokens.
+
+Terminology: use Halal, Ethical, Riba-free and Values-based in all user-facing copy.
+
+Do NOT use the word "Shariah" in visible app text.
 
 3. VISUAL DESIGN SYSTEM
 
@@ -218,7 +230,7 @@ Desktop/tablet can use a more spacious navigation/header structure while preserv
 
 Include:
 
-CENTE logo
+HalalVest logo
 
 profile/avatar access
 
@@ -272,7 +284,7 @@ Do not ask for unnecessary information at registration.
 
 7. MAIN DASHBOARD
 
-Create the main CENTE dashboard.
+Create the main HalalVest dashboard.
 
 The dashboard should be one of the strongest parts of the application.
 
@@ -320,11 +332,11 @@ Fund Wallet
 
 Send Money
 
-Safevest USD
+HalalVest USD
 
-Safevest NGN
+HalalVest NGN
 
-Safevest Gold
+HalalVest Gold
 
 USDT Swap
 
@@ -410,7 +422,7 @@ See transaction reflected in mock transaction history
 
 Support NGN/USD/USDT where appropriate.
 
-Gold should not be treated as a regular peer-to-peer sending currency unless explicitly supported by the product flow. For V1, Gold should primarily be used through Safevest Gold for buying, holding, and withdrawing/redeeming where appropriate.
+Gold should not be treated as a regular peer-to-peer sending currency unless explicitly supported by the product flow. For V1, Gold should primarily be used through HalalVest Gold for buying, holding, and withdrawing/redeeming where appropriate.
 
 Use mock recipients.
 
@@ -442,7 +454,7 @@ NGN ↔ USD
 NGN ↔ USDT
 USD ↔ USDT where appropriate for the mock experience
 
-Gold should have its own Safevest Gold purchase, conversion, and redemption flow rather than being presented as a standard currency swap.
+Gold should have its own HalalVest Gold purchase, conversion, and redemption flow rather than being presented as a standard currency swap.
 
 Use mock exchange rates.
 
@@ -466,13 +478,13 @@ success state
 
 Make the swap interface extremely clear.
 
-12. SAFEVEST USD
+12. HALALVEST USD
 
-Create the Safevest USD wealth/savings experience.
+Create the HalalVest USD wealth/savings experience.
 
 Include:
 
-Safevest USD overview
+HalalVest USD overview
 
 current balance
 
@@ -498,9 +510,9 @@ The graph should look professional and financial-app appropriate.
 
 Do not make unrealistic claims about returns.
 
-13. SAFEVEST NGN
+13. HALALVEST NGN
 
-Create the Safevest NGN experience using the same design language.
+Create the HalalVest NGN experience using the same design language.
 
 Include:
 
@@ -524,17 +536,17 @@ performance chart
 
 Use mock data.
 
-The USD and NGN Safevest screens should feel like part of the same product family.
+The USD and NGN HalalVest screens should feel like part of the same product family.
 
-14. SAFEVEST GOLD
+14. HALALVEST GOLD
 
-Create a dedicated Safevest Gold wealth experience.
+Create a dedicated HalalVest Gold wealth experience.
 
-Safevest Gold is an active V1 product and must be fully represented in the user application.
+HalalVest Gold is an active V1 product and must be fully represented in the user application.
 
 Include:
 
-Safevest Gold overview
+HalalVest Gold overview
 
 current gold balance
 
@@ -562,7 +574,7 @@ Use mock data only.
 
 Do not connect to live gold pricing, commodity markets, payment providers, or custody systems.
 
-The Safevest Gold experience should feel premium and wealth-focused while remaining consistent with the CENTE design system.
+The HalalVest Gold experience should feel premium and wealth-focused while remaining consistent with the HalalVest design system.
 
 Use gold visual accents carefully. The screen should feel luxurious but still clear, readable, and functional.
 
@@ -658,7 +670,7 @@ Send Money
 
 Swap
 
-Safevest access
+HalalVest access
 
 Use clean cards rather than displaying everything in one dense block.
 
@@ -670,7 +682,7 @@ current value
 
 performance
 
-Safevest Gold shortcut
+HalalVest Gold shortcut
 
 16. TRANSACTIONS
 
@@ -690,13 +702,13 @@ USD Swap
 
 USDT Swap
 
-Safevest Deposit
+HalalVest Deposit
 
-Safevest Withdrawal
+HalalVest Withdrawal
 
-Safevest Gold Purchase
+HalalVest Gold Purchase
 
-Safevest Gold Redemption
+HalalVest Gold Redemption
 
 Gold Value Update
 
@@ -830,13 +842,13 @@ funding wallet where applicable
 
 currency swaps
 
-Safevest deposits
+HalalVest deposits
 
-Safevest withdrawals
+HalalVest withdrawals
 
-Safevest Gold purchases
+HalalVest Gold purchases
 
-Safevest Gold redemptions
+HalalVest Gold redemptions
 
 Forgot PIN
 
@@ -886,11 +898,11 @@ Transfer completed
 
 Wallet funded
 
-Safevest update
+HalalVest update
 
-Safevest Gold purchase completed
+HalalVest Gold purchase completed
 
-Safevest Gold redemption completed
+HalalVest Gold redemption completed
 
 Gold price update
 
@@ -968,7 +980,7 @@ increase the mock gold quantity
 
 update the gold portfolio value
 
-create a Safevest Gold transaction
+create a HalalVest Gold transaction
 
 show success
 
@@ -986,7 +998,7 @@ show success
 
 update dashboard and wallet
 
-The same principle should apply to funding, swapping, and Safevest actions.
+The same principle should apply to funding, swapping, and HalalVest actions.
 
 23. MOCK DATA ARCHITECTURE
 
@@ -1012,7 +1024,7 @@ transactions
 
 exchange rates
 
-Safevest products
+HalalVest products
 
 recipients
 
@@ -1082,27 +1094,30 @@ appropriate mobile viewport
 
 offline-friendly app shell
 
-Use the actual CENTE branding for the application icon/favicon where assets are available.
+Use the actual HalalVest branding for the application icon/favicon where assets are available.
 
 Do not use Lovable branding anywhere.
 
 26. BRANDING
 
-The application should clearly feel like CENTE.
+The application should clearly feel like HalalVest: modern, premium fintech with a subtle
+halal and ethical identity. Not overly religious or traditional.
 
-Use the existing CENTE logo/identity where assets are available.
+Use the existing HalalVest logo/identity where assets are available. The single logo swap
+point is `src/components/halalvest/brand.jsx`, which loads `/public/logo-light.png` and
+`/public/logo-dark.jpg`.
 
 Do NOT invent a different company identity.
 
 Do NOT use Wealth Wallet branding.
 
-Wealth Wallet is only a visual/aesthetic reference for the premium gold/marble wealth-app feeling.
+Wealth Wallet is only a visual/aesthetic reference for the premium wealth-app feeling.
 
-The final application remains CENTE.
+The final application remains HalalVest.
 
 27. IMPORTANT SCOPE BOUNDARY
 
-This project is ONLY the CENTE USER APPLICATION.
+This project is ONLY the HalalVest USER APPLICATION.
 
 Do NOT create:
 
@@ -1170,11 +1185,11 @@ PIN keypad
 
 gold holding cards
 
-Safevest product cards
+HalalVest product cards
 
 29. FINAL EXPECTATION
 
-The result should feel like a real modern CENTE financial/wealth PWA, not a static landing page and not a basic dashboard template.
+The result should feel like a real modern HalalVest financial/wealth PWA, not a static landing page and not a basic dashboard template.
 
 The existing PHP MVP is only the functional reference.
 
@@ -1200,7 +1215,7 @@ security interactions
 
 overall consistency
 
-Build the user application as a cohesive product from onboarding → dashboard → wallet → transactions → send money → fund wallet → swaps → Safevest USD → Safevest NGN → Safevest Gold → KYC → security → profile.
+Build the user application as a cohesive product from onboarding → dashboard → wallet → transactions → send money → fund wallet → swaps → HalalVest USD → HalalVest NGN → HalalVest Gold → KYC → security → profile.
 
 Again:
 
@@ -1210,8 +1225,8 @@ NO BACKEND.
 NO REAL APIs.
 MOCK DATA ONLY.
 REACT + VITE + PWA.
-CENTE branding with the specified gold/marble visual direction.
-SAFEVEST GOLD IS AN ACTIVE V1 PRODUCT.
+HalalVest branding with the specified gold/marble visual direction.
+HALALVEST GOLD IS AN ACTIVE V1 PRODUCT.
 
 This project was built with [Lovable](https://lovable.dev).
 
